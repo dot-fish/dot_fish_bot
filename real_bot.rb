@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'telegram/bot'
-
-token = '505261678:AAEnQgSUrWLoIhlu9JMhUWeyK4LI_t2CNT0'
+require_relative 'token'
 
 Telegram::Bot::Client.run(token) do |bot|
   puts "Hello I'm a Bot"
