@@ -13,7 +13,6 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
     when '/presaleicos'
       bot.api.send_message(chat_id: message.chat.id, text: "Ok, #{message.from.first_name} - here is what is available")
-      bot.api.input_message_content(chat_id: message.chat.id, text: "Ok, #{message.from.first_name} - here is what is available")
     when '/publicicos'
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
     when '/referafriend'
