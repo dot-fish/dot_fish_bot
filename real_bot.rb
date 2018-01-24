@@ -11,7 +11,7 @@ Telegram::Bot::Client.run(token) do |bot|
     when '/start'
       options = [
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Public ICOs', url: 'https://google.com'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Pre-Sale ICOs', callback_data: 'touch'),
+      # Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Pre-Sale ICOs', callback_data: 'touch'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Refer a Friend', switch_inline_query: 'some text'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Support', switch_inline_query: 'some text'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Join our Chat Groups', switch_inline_query: 'some text')
