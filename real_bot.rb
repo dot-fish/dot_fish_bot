@@ -6,19 +6,23 @@ require 'telegram/bot'
 
 
 Telegram::Bot::Client.run(token) do |bot|
+
+  # your options
+  options = [
+    Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Pre-Sale ICOs', callback_data: 'touch'),
+  ]
+
+  # force open keyboard on mobile devices
+  markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
+
   bot.listen do |message|
     case message.text
+    when Telegram::Bot::Types::CallbackQuery
+      if message.text == 'touch'
+        bot.api.send_message(chat_id: message.chat.id, text: 'you touched me')
+      end
     when '/start'
-      options = [
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Public ICOs', url: 'https://google.com'),
-      # Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Pre-Sale ICOs', callback_data: 'touch'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Refer a Friend', switch_inline_query: 'some text'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Support', switch_inline_query: 'some text'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Join our Chat Groups', switch_inline_query: 'some text')
-    ]
-    markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
-    bot.api.send_message(chat_id: message.chat.id, text: 'What would you like to do?', reply_markup: markup)
-      # bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}! What would you like to do? 1) /presaleicos 2) /publicicos 3) /referafriend")
+      bot.api.send_message(chat_id: message.chat.id, text: 'What would you like to do?', reply_markup: markup)
     when '/end'
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
     else
