@@ -12,9 +12,9 @@ Telegram::Bot::Client.run(token) do |bot|
     when '/start'
 
       options = [
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', text: 'Great, live your truth.'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', switch_inline_query: 'Great, live your truth.'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'You', switch_inline_query: '...getting there'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', url: 'http://www.think.fish/')
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', urls: 'http://www.think.fish/')
       ]
 
       markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
