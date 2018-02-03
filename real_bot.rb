@@ -2,22 +2,23 @@ require 'rubygems'
 require 'telegram/bot'
 # require_relative 'secrets'
 
- token = '505261678:AAEnQgSUrWLoIhlu9JMhUWeyK4LI_t2CNT0'
+ token = '526488930:AAFc4x-ntuk0Y_2Mae1wbgupMp6UL_6gV1E'
+
 
 
 Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
+
       options = [
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Public ICOs', url: 'https://google.com'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Pre-Sale ICOs', callback_data: 'touch'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Refer a Friend', switch_inline_query: 'some text'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Support', switch_inline_query: 'some text'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Join our Chat Groups', switch_inline_query: 'some text')
-    ]
-    markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
-    bot.api.send_message(chat_id: message.chat.id, text: 'What would you like to do?', reply_markup: markup)
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', text: 'Great, live your truth.'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'You', switch_inline_query: '...getting there'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', url: 'http://www.think.fish/')
+      ]
+
+      markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
+      bot.api.send_message(chat_id: message.chat.id, text: 'Who are you today?', reply_markup: markup)
       # bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}! What would you like to do? 1) /presaleicos 2) /publicicos 3) /referafriend")
     when '/end'
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
@@ -27,6 +28,7 @@ Telegram::Bot::Client.run(token) do |bot|
   end
 
 end
+
 
 #callback_data for ICOs needs to be the database of ICOs from admin, which needs to iterate through with numbers and data.
 #support will return a contact to @joinMCT
