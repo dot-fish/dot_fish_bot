@@ -1,2 +1,2 @@
-gem 'telegram-bot-ruby'
-gem "figaro"
+# gem 'telegram-bot-ruby'
+# gem "figaro"

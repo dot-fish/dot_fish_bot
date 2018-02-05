@@ -1,4 +1,4 @@
-require 'rubygems'
+# require 'rubygems'
 require 'telegram/bot'
 # require_relative 'secrets'
 
@@ -12,7 +12,7 @@ Telegram::Bot::Client.run(token) do |bot|
 
       options = [
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', switch_inline_query_current_chat: 'Great, live your truth.'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'You', switch_inline_query: '...getting there'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'A Diff Fish', switch_inline_query: '...feeling your vibes today'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', url: 'http://www.think.fish/')
       ]
 
