@@ -1,17 +1,19 @@
 require 'rubygems'
 require 'telegram/bot'
-require_relative 'config/application.yml'
+# require_relative 'secrets'
+
+ token = '526488930:AAFc4x-ntuk0Y_2Mae1wbgupMp6UL_6gV1E'
 
 
-Telegram::Bot::Client.run(telegram_token) do |bot|
+Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
 
       options = [
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', switch_inline_query: 'Great, live your truth.'),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Me', switch_inline_query_current_chat: 'Great, live your truth.'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'You', switch_inline_query: '...getting there'),
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', urls: 'http://www.think.fish/')
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'We', url: 'http://www.think.fish/')
       ]
 
       markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: options)
@@ -20,7 +22,7 @@ Telegram::Bot::Client.run(telegram_token) do |bot|
     when '/end'
       bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}!")
     else
-      bot.api.send_message(chat_id: message.chat.id, text: "I don't understand you :(")
+      bot.api.send_message(chat_id: message.chat.id, text: "Are you crazy? Get lost.")
     end
   end
 
