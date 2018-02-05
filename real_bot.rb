@@ -1,11 +1,11 @@
-# require 'rubygems'
+require 'rubygems'
 require 'telegram/bot'
 # require_relative 'secrets'
 
- token = '526488930:AAFc4x-ntuk0Y_2Mae1wbgupMp6UL_6gV1E'
+TOKEN = '526488930:AAFc4x-ntuk0Y_2Mae1wbgupMp6UL_6gV1E'
 
 
-Telegram::Bot::Client.run(token) do |bot|
+Telegram::Bot::Client.run(TOKEN) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
