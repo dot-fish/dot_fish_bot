@@ -1,2 +1,5 @@
 #ignore configuration
 token.rb
+
+# Ignore application configuration
+/config/application.yml
